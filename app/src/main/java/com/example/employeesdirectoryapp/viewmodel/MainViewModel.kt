@@ -8,6 +8,7 @@ import com.example.employeesdirectoryapp.data.entity.Employee
 import com.example.employeesdirectoryapp.data.mapper.ResponseHandler
 import com.example.employeesdirectoryapp.usecase.GetEmployeesListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,10 +21,17 @@ class MainViewModel @Inject constructor(
     val listEmployees: LiveData<ResponseHandler<List<Employee>>> = _listEmployees
 
     fun getListEmployees() {
-        _listEmployees.postValue(ResponseHandler.LOADING())
         viewModelScope.launch {
+            startProgress()
             val response = getEmployeesListUseCase.getEmployeesList()
             _listEmployees.postValue(response)
+        }
+    }
+
+    private suspend fun startProgress() {
+        for (i in 20..100 step 20) {
+            delay(500)
+            _listEmployees.postValue(ResponseHandler.LOADING(i))
         }
     }
 }

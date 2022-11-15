@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">EmployeesDirectoryApp</string>
+    <string name="str_name_donovan">Donovan</string>
+    <string name="str_email_donovan">donovan@email.com</string>
+    <string name="cd_employee_photo">Employee photo</string>
+    <string name="str_error_404">Error: 404</string>
+    <string name="cd_error_404">Error 404</string>
 </resources>
