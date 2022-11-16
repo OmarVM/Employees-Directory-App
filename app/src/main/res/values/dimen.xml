@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="top_margin_row">5dp</dimen>
+    <dimen name="bottom_margin_row">@dimen/top_margin_row</dimen>
+
+    <dimen name="width_photo_profile_row">60dp</dimen>
+    <dimen name="height_photo_profile_row">@dimen/width_photo_profile_row</dimen>
+</resources>

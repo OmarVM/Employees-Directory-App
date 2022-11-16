@@ -11,7 +11,9 @@ class EmployeeMapper() : EmployeeMapperContract<Employee, EmployeeRemote> {
             fullName = employeeRemote.fullName,
             phoneNumber = employeeRemote.phoneNumber,
             emailAddress = employeeRemote.emailAddress,
-            biography = employeeRemote.biography
+            biography = employeeRemote.biography,
+            photoUrlSmall = employeeRemote.photoUrlSmall,
+            team = employeeRemote.team
         )
     }
 

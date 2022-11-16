@@ -13,4 +13,8 @@ data class EmployeeRemote(
     val emailAddress: String,
     @field:Json(name = "biography")
     val biography: String,
+    @field:Json(name = "photo_url_small")
+    val photoUrlSmall: String,
+    @field:Json(name = "team")
+    val team:String
 )

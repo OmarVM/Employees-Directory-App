@@ -3,8 +3,12 @@ package com.example.employeesdirectoryapp.ui
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.example.employeesdirectoryapp.R
 import com.example.employeesdirectoryapp.data.entity.Employee
 import com.example.employeesdirectoryapp.databinding.RowEmployeeBinding
+import com.google.android.material.circularreveal.CircularRevealHelper.Strategy
 
 class AdapterEmployees (private val listItems: List<Employee>) : RecyclerView.Adapter<AdapterEmployees.EmployeeViewHolder>() {
 
@@ -24,12 +28,20 @@ class AdapterEmployees (private val listItems: List<Employee>) : RecyclerView.Ad
        return listItems.size
     }
 
-    inner class EmployeeViewHolder(view: RowEmployeeBinding): RecyclerView.ViewHolder(view.root) {
+    inner class EmployeeViewHolder(private val view: RowEmployeeBinding): RecyclerView.ViewHolder(view.root) {
 
         fun bind(item: Employee) {
             binding.apply {
                 rowEmployeeName.text = item.fullName
-                rowEmployeeEmail.text = item.emailAddress
+                rowEmployeeTeam.text = item.team
+                Glide
+                    .with(view.root)
+                    .load(item.photoUrlSmall)
+                    .centerCrop()
+                    .circleCrop()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .placeholder(R.drawable.ic_img_default)
+                    .into(rowEmployeePhoto)
             }
         }
     }

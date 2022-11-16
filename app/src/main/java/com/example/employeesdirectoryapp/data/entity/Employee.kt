@@ -7,4 +7,6 @@ data class Employee(
     val phoneNumber: String,
     val emailAddress: String,
     val biography: String,
+    val photoUrlSmall: String,
+    val team: String
 )
