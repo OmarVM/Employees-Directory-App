@@ -5,4 +5,6 @@
     <string name="str_error_404">Error: 404</string>
     <string name="cd_error_404">Error 404</string>
     <string name="str_full_time_default">Point of Sale Platform</string>
+    <string name="str_menu_load_data">Load Data</string>
+    <string name="str_welcome">Click on icon menu to download info.</string>
 </resources>

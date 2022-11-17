@@ -3,8 +3,12 @@ package com.example.employeesdirectoryapp.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.Adapter
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.employeesdirectoryapp.R
 import com.example.employeesdirectoryapp.data.mapper.ResponseHandler
@@ -29,7 +33,10 @@ class MainActivity : AppCompatActivity() {
                 is ResponseHandler.LOADING -> {
                     _info.progress?.let { _value ->
                         Log.d("LOGGER", "Loading... $_value")
+                        binding.employeesRv.visibility = View.INVISIBLE
+                        binding.mainProgressBar.visibility = View.VISIBLE
                         binding.mainProgressBar.progress = _value
+                        binding.llWelcomeStatus.visibility = View.GONE
                     }
                 }
                 is ResponseHandler.SUCCESS -> {
@@ -40,6 +47,7 @@ class MainActivity : AppCompatActivity() {
                     binding.employeesRv.visibility = View.VISIBLE
                 }
                 is ResponseHandler.ERROR -> {
+                    binding.llWelcomeStatus.visibility = View.GONE
                     binding.mainProgressBar.visibility = View.GONE
                     binding.llErrorStatus.visibility = View.VISIBLE
                     Log.d("LOGGER", "Error: ${_info.message}")
@@ -47,6 +55,24 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        mainViewModel.getListEmployees()
+        mainViewModel.notifyRequestReady.observe(this) { _msg ->
+            Toast.makeText(this, _msg, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.id.load_data -> {
+                mainViewModel.getListEmployees()
+                return true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
