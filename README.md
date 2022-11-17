@@ -36,3 +36,7 @@ I just follow some official guides or repos from Android -> https://github.com/a
 ## Is there any other information you’d like us to know?
 You can see every step in my repo, I planned every commit to reflect my progress, using Gitmoji.dev to more fun.
 You also can see the some logs interaction with this tag -> "LOGGER"
+
+## Screenshot
+
+![Screenshot_20221117_170745](https://user-images.githubusercontent.com/18560308/202579670-9dcec362-aeb3-4b94-b100-ad6d509c8709.png)
