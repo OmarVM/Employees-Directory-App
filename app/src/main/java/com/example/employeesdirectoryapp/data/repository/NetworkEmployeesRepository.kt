@@ -14,8 +14,10 @@ class NetworkEmployeesRepository @Inject constructor(
         val response = employeesAPI.getEmployeesList()
          if (response.isSuccessful) {
              response.body()?.let { _list ->
-                 val mList = mapper.toEmployeeList(_list.employees)
-                 return ResponseHandler.SUCCESS<List<Employee>>(mList)
+                 if (_list.employees.isNotEmpty()) {
+                     val mList = mapper.toEmployeeList(_list.employees)
+                     return ResponseHandler.SUCCESS<List<Employee>>(mList)
+                 }
              }
          }
          return ResponseHandler.ERROR(message = response.errorBody().toString())
