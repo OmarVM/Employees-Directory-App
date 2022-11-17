@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EmployeesDirectoryApp</string>
+    <string name="app_name">Directory App</string>
     <string name="str_name_default">Donovan</string>
     <string name="cd_employee_photo">Employee photo</string>
     <string name="str_error_404">Error: 404</string>
